@@ -158,6 +158,14 @@ easy to do with RStudio too.
 - What's new in Jupyter Notebooks @[Elucidata](https://elucidata.io/):
   - Using Jupyter Notebooks with Jupyterhub on GCP, managed by GKE - https://medium.com/elucidata/why-you-should-be-using-a-jupyter-notebook-8385a4ccd93d
 
+### CERN
+
+- SWAN (Service for Web based ANalysis), a platform to perform interactive data analysis in the cloud, integrated with CERN compute, storage and software.
+  - [Official website](https://cern.ch/swan)
+  - [Spark Monitor](https://github.com/swan-cern/sparkmonitor/) a jupyter extension to monitor Apache Spark applications
+  - [Notebook gallery](https://swan-gallery.web.cern.ch/)
+  - [Sciencebox](https://cern.ch/sciencebox/) a full analysis setup, with SWAN (based on Zero to JupyterHub), and other CERN components (CERNBox, EOS, CVMFS)
+
 ## Service Providers
 
 ### AWS

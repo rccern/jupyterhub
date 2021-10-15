@@ -88,6 +88,10 @@ class Authenticator(LoggingConfigurable):
         help="""
         Set of users that will have admin rights on this JupyterHub.
 
+        Note: As of JupyterHub 2.0,
+        full admin rights should not be required,
+        and more precise permissions can be managed via roles.
+
         Admin users have extra privileges:
          - Use the admin panel to see list of users logged in
          - Add / remove users in some authenticators
@@ -987,6 +991,10 @@ class PAMAuthenticator(LocalAuthenticator):
         Users not in these groups can still be granted admin status through admin_users.
 
         allowed/blocked rules still apply.
+
+        Note: As of JupyterHub 2.0,
+        full admin rights should not be required,
+        and more precise permissions can be managed via roles.
         """
     ).tag(config=True)
 
@@ -1165,3 +1173,22 @@ class DummyAuthenticator(Authenticator):
                 return data['username']
             return None
         return data['username']
+
+
+class NullAuthenticator(Authenticator):
+    """Null Authenticator for JupyterHub
+
+    For cases where authentication should be disabled,
+    e.g. only allowing access via API tokens.
+
+    .. versionadded:: 2.0
+    """
+
+    # auto_login skips 'Login with...' page on Hub 0.8
+    auto_login = True
+
+    # for Hub 0.7, show 'login with...'
+    login_service = 'null'
+
+    def get_handlers(self, app):
+        return []
